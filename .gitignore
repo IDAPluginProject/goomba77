@@ -1,3 +1,6 @@
 .gitignore
 r32.bat
 tests/
+build/
+build64/
+z3/

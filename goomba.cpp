@@ -161,8 +161,8 @@ static ssize_t idaapi callback(void *ud, hexrays_event_t event, va_list va)
         mba_t *mba = va_arg(va, mba_t *);
         if ( always_on() || plugmod->run_automatically )
           plugmod->plugmod_active = true;
-        if ( plugmod->plugmod_active )
-          mba->set_mba_flags2(MBA2_PROP_COMPLEX); // increase acceptable complexity
+        //if ( plugmod->plugmod_active )
+          //mba->set_mba_flags2(MBA2_PROP_COMPLEX); // increase acceptable complexity
       }
       break;
 
@@ -206,7 +206,7 @@ static ssize_t idaapi callback(void *ud, hexrays_event_t event, va_list va)
           msg("Completed mba optimization pass, improved %d expressions\n", visitor.cnt);
         }
         plugmod->plugmod_active = false;
-        mba->clr_mba_flags2(MBA2_PROP_COMPLEX);
+        //mba->clr_mba_flags2(MBA2_PROP_COMPLEX);
         return MERR_LOOP; // restart optimization
       }
       break;

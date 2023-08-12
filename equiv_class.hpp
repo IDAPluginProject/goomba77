@@ -116,10 +116,10 @@ public:
     if ( version == -1 ) // use current serialization version
     {
       bytevec_t bv;
-      version = minsn_t(0).serialize(&bv);
+      version = 0;// minsn_t(0).serialize(&bv);
     }
     minsn_t minsn(0);
-    minsn.deserialize(buf, sz, version);
+    //minsn.deserialize(buf, sz, version);
 
     return compute_fingerprint(minsn, mapping);
   }
@@ -286,7 +286,7 @@ struct equiv_class_finder_lazy_t : public equiv_class_finder_t
       if ( qfread(file, bv.begin(), minsn_sz) != minsn_sz )
         INTERR(30725);
       minsn_t *minsn = new minsn_t(0);
-      minsn->deserialize(bv.begin(), minsn_sz, format_version);
+      //minsn->deserialize(bv.begin(), minsn_sz, format_version);
       set.insert(minsn);
     }
   }

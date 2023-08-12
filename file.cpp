@@ -59,11 +59,11 @@ void create_minsns_file(FILE *msynth_in, FILE *minsns_out)
     msynth_expr_parser_t mep(line.c_str(), default_vars);
     minsn_t *insn = mep.parse_next_expr();
 
-    bytevec_t bv;
-    insn->serialize(&bv);
-    uint32 bv_sz = bv.size();
+    //bytevec_t bv;
+    //insn->serialize(&bv);
+    uint32 bv_sz = 0;//bv.size();
     qfwrite(minsns_out, &bv_sz, sizeof(bv_sz));
-    qfwrite(minsns_out, bv.begin(), bv_sz);
+    qfwrite(minsns_out, 0, bv_sz);
     n_written++;
 
     delete insn;
@@ -159,7 +159,7 @@ bool create_oracle_file(FILE *minsns_in, FILE *oracle_out)
   // begin by writing the format version
   {
     bytevec_t bv;
-    uint32 format_version = minsn_t(0).serialize(&bv);
+    uint32 format_version = 0;//minsn_t(0).serialize(&bv);
     qfwrite(oracle_out, &format_version, sizeof(format_version));
   }
 
