@@ -332,7 +332,7 @@ public:
       case m_setle:
         return mcode_val_t(mop_value(insn.l).signed_val() <= mop_value(insn.r).signed_val(), insn.d.size);
       default:
-        msg("Unhandled opcode in emulator %d\n", insn.opcode);
+        msg("Unhandled opcode in emulator %d at 0x%llx\n", insn.opcode, insn.ea);
         throw "Unhandled opcode";
     }
   }
